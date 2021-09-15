@@ -19,7 +19,7 @@ fi
 
 sort_versions() {
   sed 'h; s/[+-]/./g; s/.p\([[:digit:]]\)/.z\1/; s/$/.z/; G; s/\n/ /' |
-    LC_ALL=C sort -Vr | awk '{print $2}'
+    LC_ALL=C sort -V | awk '{print $2}'
 }
 
 list_github_tags() {
