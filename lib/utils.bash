@@ -33,28 +33,35 @@ list_all_versions() {
 }
 
 download_release() {
-  local version filename url assetname
+  local version filename url assetprefix assetplatform assetname
   version="$1"
   filename="$2"
 
+  if verlt "$version" "11.0.0"; then
+    assetprefix="tokei-v${version}-"
+  else
+    assetprefix="tokei-"
+  fi
+
   case "$(uname -s)" in
   "Darwin")
-    assetname="tokei-x86_64-apple-darwin"
+    assetplatform="x86_64-apple-darwin"
     ;;
   "Linux")
     case "$(uname -m)" in
     "x86_64")
-      assetname="tokei-x86_64-unknown-linux-gnu"
+      assetplatform="x86_64-unknown-linux-gnu"
       ;;
     "i686")
-      assetname="tokei-i686-unknown-linux-gnu"
+      assetplatform="i686-unknown-linux-gnu"
       ;;
     "armv7l")
-      assetname="tokei-armv7-unknown-linux-gnueabi"
+      assetplatform="armv7-unknown-linux-gnueabi"
       ;;
     esac
     ;;
   esac
+  assetname="${assetprefix}${assetplatform}"
   url="$GH_REPO/releases/download/v${version}/${assetname}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
@@ -83,4 +90,12 @@ install_version() {
     rm -rf "$install_path"
     fail "An error ocurred while installing $TOOL_NAME $version."
   )
+}
+
+verlte() {
+  [ "$1" = "$(echo -e "$1\n$2" | sort -V | head -n1)" ]
+}
+
+verlt() {
+  [ "$1" = "$2" ] && return 1 || verlte $1 $2
 }
