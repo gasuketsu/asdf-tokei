@@ -54,6 +54,7 @@ download_release() {
           ;;
       esac
       ;;
+  esac
   url="$GH_REPO/releases/download/v${version}/${assetname}.tar.gz"
 
   echo "* Downloading $TOOL_NAME release $version..."
