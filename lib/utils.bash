@@ -58,6 +58,9 @@ download_release() {
     "armv7l")
       assetplatform="armv7-unknown-linux-gnueabihf"
       ;;
+    "aarch64")
+      assetplatform="aarch64-unknown-linux-gnu"
+      ;;
     esac
     ;;
   esac
