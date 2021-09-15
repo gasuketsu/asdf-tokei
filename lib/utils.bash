@@ -50,10 +50,10 @@ download_release() {
   "Linux")
     case "$(uname -m)" in
     "x86_64")
-      assetplatform="x86_64-unknown-linux-gnu"
+      assetplatform="x86_64-unknown-linux-musl"
       ;;
     "i686")
-      assetplatform="i686-unknown-linux-gnu"
+      assetplatform="i686-unknown-linux-musl"
       ;;
     "armv7l")
       assetplatform="armv7-unknown-linux-gnueabihf"
