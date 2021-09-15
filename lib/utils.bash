@@ -38,22 +38,22 @@ download_release() {
   filename="$2"
 
   case "$(uname -s)" in
-    "Darwin")
-      assetname="tokei-x86_64-apple-darwin"
+  "Darwin")
+    assetname="tokei-x86_64-apple-darwin"
+    ;;
+  "Linux")
+    case "$(uname -m)" in
+    "x86_64")
+      assetname="tokei-x86_64-unknown-linux-gnu"
       ;;
-    "Linux")
-      case "$(uname -m)" in
-        "x86_64")
-          assetname="tokei-x86_64-unknown-linux-gnu"
-          ;;
-        "i686")
-          assetname="tokei-i686-unknown-linux-gnu"
-          ;;
-        "armv7l")
-          assetname="tokei-armv7-unknown-linux-gnueabi"
-          ;;
-      esac
+    "i686")
+      assetname="tokei-i686-unknown-linux-gnu"
       ;;
+    "armv7l")
+      assetname="tokei-armv7-unknown-linux-gnueabi"
+      ;;
+    esac
+    ;;
   esac
   url="$GH_REPO/releases/download/v${version}/${assetname}.tar.gz"
 
