@@ -56,7 +56,7 @@ download_release() {
       assetplatform="i686-unknown-linux-gnu"
       ;;
     "armv7l")
-      assetplatform="armv7-unknown-linux-gnueabi"
+      assetplatform="armv7-unknown-linux-gnueabihf"
       ;;
     esac
     ;;
