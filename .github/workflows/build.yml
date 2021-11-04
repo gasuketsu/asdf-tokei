@@ -21,3 +21,4 @@ jobs:
         with:
           command: tokei --version
           version: latest
+          gitref: ${{ github.sha }}
