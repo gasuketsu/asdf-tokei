@@ -45,7 +45,14 @@ download_release() {
 
   case "$(uname -s)" in
   "Darwin")
-    assetplatform="x86_64-apple-darwin"
+    case "$(uname -m)" in
+    "x86_64")
+      assetplatform="x86_64-apple-darwin"
+      ;;
+    "arm64")
+      assetplatform="arm64-apple-darwin"
+      ;;
+    esac
     ;;
   "Linux")
     case "$(uname -m)" in
